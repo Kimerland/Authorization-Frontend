@@ -1,21 +1,12 @@
-import { PageBlockWrapper } from "@/components/PageBlockWrapper/PageBlockWrapper";
+import { AuthLayout } from "@/components/AuthLayout/AuthLayout";
 import React from "react";
 
-const page = () => {
+const RegisterPage = () => {
   return (
-    <PageBlockWrapper>
-      <div className="register-wrapper">
-        <div className="logo-main">
-          <p>Kimerland</p>
-        </div>
-
-        <div className="">
-          <p>Login</p>
-        </div>
-      </div>
-      ;
-    </PageBlockWrapper>
+    <AuthLayout>
+      <p>Hi</p>
+    </AuthLayout>
   );
 };
 
-export default page;
+export default RegisterPage;
