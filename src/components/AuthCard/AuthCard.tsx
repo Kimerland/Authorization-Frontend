@@ -1,17 +1,51 @@
 import React from "react";
+import "./AuthCard.css";
+import { GlassCard } from "../GlassCard/GlassCard";
 
-export const AuthCard = () => {
+interface AuthCardProps {
+  type?: "login" | "register";
+}
+
+export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
   return (
-    <div className="auth__card__wrapper">
+    <GlassCard>
       <div className="auth__card__container">
         <div className="auth__card__logo">
-          <p>Logo</p>
+          <p className="auth__card__logo__text">Kimerlander</p>
         </div>
 
-        <h1 className="auth__card__title">Login / Register</h1>
+        <h1 className="auth__card__title">
+          {type === "login" ? "Login" : "Register"}
+        </h1>
+
+        <form className="auth__card__form">
+          <div className="auth__form__container">
+            <label htmlFor="email" className="auth__card__label">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="username@gmail.com"
+              className="auth__card__input"
+            />
+          </div>
+
+          <div className="auth__form__container">
+            <label htmlFor="password" className="auth__card__label">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              className="auth__card__input"
+            />
+          </div>
+        </form>
 
         <form action=""></form>
       </div>
-    </div>
+    </GlassCard>
   );
 };

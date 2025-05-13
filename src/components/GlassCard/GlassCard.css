@@ -1,0 +1,14 @@
+.glass-card {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: #5882c15e;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  width: 100%;
+  height: 557px;
+  max-width: 410px;
+}

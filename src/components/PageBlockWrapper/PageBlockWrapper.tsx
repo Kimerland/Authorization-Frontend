@@ -21,9 +21,7 @@ export const PageBlockWrapper: FC<IPageWrapper> = ({
         ...style,
       }}
     >
-      <div className="page-block-wrapper-black">
-        <div className="page-block-container-glass">{children}</div>
-      </div>
+      <div className="page-block-wrapper-black">{children}</div>
     </div>
   );
 };
