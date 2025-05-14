@@ -18,15 +18,22 @@ export const decorations = [
   {
     src: "/wave_1.svg",
     className: "decorations__wave__1",
-    width: 193,
-    height: 193,
+    width: 476,
+    height: 442,
     alt: "wave_1",
   },
   {
     src: "/wave_2.svg",
     className: "decorations__wave__2",
-    width: 193,
-    height: 193,
+    width: 477,
+    height: 444,
+    alt: "wave_2",
+  },
+  {
+    src: "/storm_big.svg",
+    className: "decorations__storm__big",
+    width: 483,
+    height: 166,
     alt: "wave_2",
   },
 ];

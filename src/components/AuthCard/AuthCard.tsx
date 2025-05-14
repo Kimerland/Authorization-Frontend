@@ -14,11 +14,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
           <p className="auth__card__logo__text">Kimerlander</p>
         </div>
 
-        <h1 className="auth__card__title">
-          {type === "login" ? "Login" : "Register"}
-        </h1>
-
         <form className="auth__card__form">
+          <p className="auth__card__title">
+            {type === "login" ? "Login" : "Register"}
+          </p>
+
           <div className="auth__form__container">
             <label htmlFor="email" className="auth__card__label">
               Email

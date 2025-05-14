@@ -7,16 +7,48 @@
 }
 
 .auth__card__logo {
+  /* don't used */
 }
 
 .auth__card__logo__text {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 24px;
   color: #fff;
 }
 
+.auth__card__form {
+  width: 250px;
+  height: 407px;
+}
+
 .auth__card__title {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 24px;
   color: #fff;
+  padding-bottom: 14px;
+}
+
+.auth__form__container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+}
+
+.auth__card__label {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+  padding-bottom: 8px;
+}
+
+.auth__card__input {
+  outline: none;
+  border: 0.71px solid #bcbec0;
+  border-radius: 5px;
+  padding: 16px;
+  width: 250px;
+  height: 32px;
+  background: #fff;
+  color: black;
 }

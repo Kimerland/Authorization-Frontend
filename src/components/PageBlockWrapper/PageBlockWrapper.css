@@ -1,4 +1,6 @@
 .page-block-wrapper {
+  position: relative;
+  z-index: 1;
   width: 100vw;
   min-height: 100vh;
   background-size: cover;
@@ -12,7 +14,9 @@
 .page-block-wrapper-black {
   display: flex;
   justify-content: center;
-  background: radial-gradient(#0085ff, #003465);
+  align-items: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 24px;
   padding: 40px;
   width: 100%;

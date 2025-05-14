@@ -14,21 +14,26 @@
 }
 
 .decorations__obstacle__1 {
-  top: 15%;
-  left: 10%;
+  bottom: 10%;
+  right: 55%;
 }
 
 .decorations__obstacle__2 {
-  bottom: 20%;
-  right: 15%;
+  top: -3vh;
+  left: 30vw;
 }
 
 .decorations__wave__1 {
-  top: 30%;
-  right: 35%;
+  bottom: -10%;
+  left: 5%;
 }
 
 .decorations__wave__2 {
-  bottom: 30%;
-  left: 20%;
+  top: 20%;
+  right: 25%;
+}
+
+.decorations__storm__big {
+  top: 80%;
+  right: 0%;
 }
