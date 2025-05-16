@@ -35,7 +35,6 @@
 }
 
 .auth__card__label {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 13px;
   color: #fff;
@@ -51,4 +50,77 @@
   height: 32px;
   background: #fff;
   color: black;
+}
+
+.forgot__password {
+  padding-top: 10.58px;
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+}
+
+.auth__card__button {
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+  height: 40px;
+  margin-top: 34px;
+  padding: 16px 100px;
+  background: #003465;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}
+
+.auth__card__social {
+  padding: 12px 0px 12px 0px;
+}
+
+.auth__card__title {
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+}
+
+.auth__card__btn {
+  display: flex;
+  gap: 17px;
+}
+
+.auth__social__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0.71px solid #bcbec0;
+  border-radius: 7px;
+  width: 72px;
+  height: 35px;
+  background: #fff;
+}
+
+.social__img {
+  width: 18px;
+  height: 18px;
+}
+
+.auth__card__switch {
+  padding-top: 24px;
+}
+
+.auth__card__text {
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+.auth__card__link {
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
 }

@@ -1,10 +1,11 @@
+import { AuthCard } from "@/components/AuthCard/AuthCard";
 import { AuthLayout } from "@/components/AuthLayout/AuthLayout";
 import React from "react";
 
 const RegisterPage = () => {
   return (
     <AuthLayout>
-      <p>Hi</p>
+      <AuthCard type="register" />
     </AuthLayout>
   );
 };

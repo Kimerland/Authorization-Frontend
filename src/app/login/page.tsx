@@ -6,7 +6,7 @@ import React from "react";
 const LoginPage = () => {
   return (
     <AuthLayout>
-      <AuthCard />
+      <AuthCard type="login" />
     </AuthLayout>
   );
 };
