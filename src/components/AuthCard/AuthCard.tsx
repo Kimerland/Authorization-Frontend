@@ -44,7 +44,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
           </div>
 
           {type === "register" && (
-            <div className="auth-card__form-group">
+            <>
               <label htmlFor="confirmPassword" className="auth__card__label">
                 Confirm Password
               </label>
@@ -54,21 +54,25 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
                 placeholder="Password"
                 className="auth__card__input"
               />
-            </div>
+            </>
           )}
 
           {type === "login" && (
-            <Link href="/forgot-password">
-              <p className="forgot__password">Forgot Password?</p>
-            </Link>
+            <div className="auth__forgot__wrapper">
+              <Link href="/forgot-password">
+                <p className="forgot__password">Forgot Password?</p>
+              </Link>
+            </div>
           )}
 
-          <button type="submit" className="auth__card__button">
-            {type === "login" ? "Sign in" : "Sign up"}
-          </button>
+          <div className="auth__button__wrapper">
+            <button type="submit" className="auth__card__button">
+              {type === "login" ? "Sign in" : "Sign up"}
+            </button>
+          </div>
 
           <div className="auth__card__social">
-            <p className="auth__card__title">or continue with</p>
+            <p className="auth__card__continue">or continue with</p>
           </div>
 
           <div className="auth__card__btn">
@@ -86,22 +90,24 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
           <div className="auth__card__switch">
             {type === "login" ? (
               <>
-                <span className="auth__card__text">
-                  Don&apos;t have an account yet?{" "}
-                </span>
-                <Link href="/register" className="auth__card__link">
-                  Register for free
-                </Link>
+                <div className="auth__card__switch__container">
+                  <span className="auth__card__text">
+                    Don&apos;t have an account yet?{" "}
+                  </span>
+                  <Link href="/register" className="auth__card__link">
+                    Register for free
+                  </Link>
+                </div>
               </>
             ) : (
-              <>
+              <div className="auth__card__switch__container">
                 <span className="auth__card__text">
                   Already have an account?{" "}
                 </span>
                 <Link href="/login" className="auth__card__link">
                   Sign in
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </form>

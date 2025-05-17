@@ -37,3 +37,94 @@
   top: 80%;
   right: 0%;
 }
+
+@media (max-width: 1440px) {
+  .decorations__obstacle__1 {
+    bottom: 5%;
+    right: 45%;
+    width: 200px;
+    height: 200px;
+  }
+
+  .decorations__obstacle__2 {
+    top: 5vh;
+    left: 20vw;
+    width: 150px;
+    height: 150px;
+  }
+
+  .decorations__wave__1 {
+    bottom: -5%;
+    left: 2%;
+    width: 350px;
+    height: 350px;
+  }
+
+  .decorations__wave__2 {
+    top: 15%;
+    right: 15%;
+    width: 350px;
+    height: 350px;
+  }
+
+  .decorations__storm__big {
+    top: 75%;
+    right: 0%;
+    width: 350px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .decorations__obstacle__1 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .decorations__obstacle__2 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .decorations__wave__1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .decorations__wave__2 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .decorations__storm__big {
+    width: 250px;
+    height: 85px;
+  }
+}
+
+@media (max-width: 425px) {
+  .decorations__obstacle__1 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .decorations__obstacle__2 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .decorations__wave__1 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .decorations__wave__2 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .decorations__storm__big {
+    width: 200px;
+    height: 65px;
+  }
+}
