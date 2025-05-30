@@ -1,12 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import "./AuthCard.css";
 import { GlassCard } from "../GlassCard/GlassCard";
 import Link from "next/link";
+import { login, register } from "@/app/api/api";
+import { useRouter } from "next/navigation";
 interface AuthCardProps {
   type?: "login" | "register";
 }
 
 export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      if (type === "login") {
+        const data = await login(email, password);
+        // change redirect for next
+        router.push("/");
+        console.log("Success login", data);
+      } else {
+        const data = await register(email, password, confirmPassword);
+        router.push("/");
+        console.log("Success register", data);
+      }
+    } catch (err) {
+      console.error("Error", err);
+    }
+  };
+
   return (
     <GlassCard>
       <div className="auth__card__container">
@@ -14,7 +40,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
           <p className="auth__card__logo__text">Kimerlander</p>
         </div>
 
-        <form className="auth__card__form">
+        <form className="auth__card__form" onSubmit={handleSubmit}>
           <p className="auth__card__title">
             {type === "login" ? "Login" : "Register"}
           </p>
@@ -28,6 +54,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
               id="email"
               placeholder="username@gmail.com"
               className="auth__card__input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -40,6 +68,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
               id="password"
               placeholder="Password"
               className="auth__card__input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -53,6 +83,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
                 id="confirmPassword"
                 placeholder="Password"
                 className="auth__card__input"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </>
           )}
