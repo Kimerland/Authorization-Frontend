@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  matcher: ["/profile/:path*", "/login", "/register"],
 };
 
 export default nextConfig;

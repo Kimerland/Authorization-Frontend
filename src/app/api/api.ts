@@ -12,18 +12,19 @@ export const login = async (email: string, password: string) => {
   return res.data;
 };
 
-export async function register(
+export const register = async (
   email: string,
   password: string,
   confirmPassword: string
-) {
-  const res = await api.post("http://localhost:5000/auth/register", {
-    email,
-    password,
-    confirmPassword,
-  });
+) => {
+  console.log("Send register", { email, password, confirmPassword });
+  const res = await api.post(
+    `${API}/auth/register`,
+    { email, password, confirmPassword },
+    { withCredentials: true }
+  );
   return res.data;
-}
+};
 
 export async function getMe() {
   const res = await api.get("/auth/profile");

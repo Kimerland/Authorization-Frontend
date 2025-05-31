@@ -20,12 +20,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
     try {
       if (type === "login") {
         const data = await login(email, password);
-        // change redirect for next
-        router.push("/");
+        router.push("/profile");
         console.log("Success login", data);
       } else {
         const data = await register(email, password, confirmPassword);
-        router.push("/");
+        router.push("/profile");
         console.log("Success register", data);
       }
     } catch (err) {
