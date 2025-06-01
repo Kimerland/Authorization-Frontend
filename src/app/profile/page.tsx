@@ -1,11 +1,13 @@
 import { AuthLayout } from "@/components/AuthLayout/AuthLayout";
+import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
+
 import React from "react";
 
 const ProfilePage = () => {
   return (
     <div>
       <AuthLayout>
-        <p>Thanks for watch my project</p>
+        <ProfileCard />
       </AuthLayout>
     </div>
   );
