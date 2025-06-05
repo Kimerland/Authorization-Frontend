@@ -6,9 +6,13 @@ import axios from "axios";
 
 export const ProfileCard = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [editedData, setEditedData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const userData = async () => {
@@ -16,14 +20,42 @@ export const ProfileCard = () => {
         const res = await axios.get("http://localhost:5000/auth/profile", {
           withCredentials: true,
         });
-        const { email } = res.data;
+        const { email, id } = res.data;
         setEmail(email);
+        setUserId(id);
+        setEditedData((p) => ({ ...p, email }));
       } catch (err) {
         console.error(err);
       }
     };
     userData();
   }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedData({ ...editedData, [e.target.name]: e.target.value });
+  };
+
+  const handleSave = async () => {
+    if (editedData.password !== editedData.confirmPassword) {
+      alert("Undefined pass");
+      return;
+    }
+
+    try {
+      const payload: { email?: string; password?: string } = {};
+      if (editedData.email !== email) payload.email = editedData.email;
+      if (editedData.password) payload.password = editedData.password;
+
+      await axios.patch(`http://localhost:5000/users/${userId}`, payload, {
+        withCredentials: true,
+      });
+
+      setEmail(editedData.email);
+      setIsEditing(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <GlassCard>
@@ -38,9 +70,11 @@ export const ProfileCard = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="profile__card__input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={isEditing ? editedData.email : email}
+              readOnly={!isEditing}
+              onChange={handleChange}
             />
           </div>
 
@@ -51,9 +85,11 @@ export const ProfileCard = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="profile__card__input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={isEditing ? editedData.password : "123456"}
+              readOnly={!isEditing}
+              onChange={handleChange}
             />
           </div>
 
@@ -64,16 +100,19 @@ export const ProfileCard = () => {
             <input
               type="password"
               id="confirmPassword"
+              name="confirmPassword"
               className="profile__card__input"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={isEditing ? editedData.confirmPassword : "123456"}
+              readOnly={!isEditing}
+              onChange={handleChange}
             />
           </div>
 
           <div className="profile__button__wrapper">
             <button
-              onClick={() => setIsEditing(!isEditing)}
               className="profile__save__btn"
+              type="button"
+              onClick={isEditing ? handleSave : () => setIsEditing(true)}
             >
               {isEditing ? "Save" : "Edit"}
             </button>
