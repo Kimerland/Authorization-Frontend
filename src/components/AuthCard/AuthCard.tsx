@@ -1,34 +1,48 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import "./AuthCard.css";
 import { GlassCard } from "../GlassCard/GlassCard";
 import Link from "next/link";
 import { login, register } from "@/app/api/api";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  loginSchema,
+  loginSchemaType,
+  registerSchema,
+  registerSchemaType,
+} from "@/schemas/auth.schema";
 interface AuthCardProps {
   type?: "login" | "register";
 }
 
 export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register: formRegister,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<loginSchemaType | registerSchemaType>({
+    resolver: zodResolver(type === "login" ? loginSchema : registerSchema),
+  });
+
+  const onSubmit = async (data: any) => {
     try {
       if (type === "login") {
-        const data = await login(email, password);
+        const res = await login(data.email, data.password);
         router.push("/profile");
-        console.log("Success login", data);
       } else {
-        const data = await register(email, password, confirmPassword);
+        const res = await register(
+          data.email,
+          data.password,
+          data.confirmPassword
+        );
         router.push("/profile");
-        console.log("Success register", data);
       }
     } catch (err) {
-      console.error("Error", err);
+      console.log("Error", err);
     }
   };
 
@@ -39,7 +53,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
           <p className="auth__card__logo__text">Kimerlander</p>
         </div>
 
-        <form className="auth__card__form" onSubmit={handleSubmit}>
+        <form className="auth__card__form" onSubmit={handleSubmit(onSubmit)}>
           <p className="auth__card__title">
             {type === "login" ? "Login" : "Register"}
           </p>
@@ -53,9 +67,9 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
               id="email"
               placeholder="username@gmail.com"
               className="auth__card__input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...formRegister("email")}
             />
+            {errors.email && <p className="error">{errors.email.message}</p>}
           </div>
 
           <div className="auth__form__container">
@@ -67,9 +81,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
               id="password"
               placeholder="Password"
               className="auth__card__input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...formRegister("password")}
             />
+            {errors.password && (
+              <p className="error">{errors.password.message}</p>
+            )}
           </div>
 
           {type === "register" && (
@@ -82,9 +98,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
                 id="confirmPassword"
                 placeholder="Password"
                 className="auth__card__input"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                {...formRegister("confirmPassword")}
               />
+              {errors.password && (
+                <p className="error">{errors.password.message}</p>
+              )}
             </>
           )}
 

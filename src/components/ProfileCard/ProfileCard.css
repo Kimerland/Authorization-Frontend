@@ -73,10 +73,48 @@
   color: #fff;
   border: none;
   transition: background-color 0.2s;
+  margin: 5px;
 }
 
 .profile__save__btn:hover {
   background: #00294e;
+}
+
+.profile__card__social {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.profice__card__connect {
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+}
+
+.profile__card__btns {
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+  margin-bottom: 20px;
+}
+
+.profile__social__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0.71px solid #bcbec0;
+  border-radius: 7px;
+  width: 72px;
+  height: 35px;
+  background: #fff;
+  transition: background-color 0.2s;
+}
+
+.social__img {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 425px) {

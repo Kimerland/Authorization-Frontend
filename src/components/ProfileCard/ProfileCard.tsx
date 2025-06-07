@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { GlassCard } from "../GlassCard/GlassCard";
 import "./ProfileCard.css";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export const ProfileCard = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ export const ProfileCard = () => {
     confirmPassword: "",
   });
   const [userId, setUserId] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const userData = async () => {
@@ -55,6 +57,15 @@ export const ProfileCard = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const logOut = async () => {
+    await axios.post(
+      "http://localhost:5000/auth/logout",
+      {},
+      { withCredentials: true }
+    );
+    router.push("/login");
   };
 
   return (
@@ -116,9 +127,37 @@ export const ProfileCard = () => {
             >
               {isEditing ? "Save" : "Edit"}
             </button>
+
+            <button
+              className="profile__save__btn"
+              type="button"
+              onClick={() => logOut()}
+            >
+              Logout
+            </button>
           </div>
+          {/*  */}
+          <div className="profile__card__social">
+            <p className="profice__card__connect">connect with</p>
+          </div>
+
+          <div className="profile__card__btns">
+            <button className="profile__social__btn">
+              <img src="google.png" alt="google" className="social__img" />
+            </button>
+            <button className="profile__social__btn">
+              <img src="github.png" alt="github" className="social__img" />
+            </button>
+            <button className="profile__social__btn">
+              <img src="facebook.png" alt="facebook" className="social__img" />
+            </button>
+          </div>
+
+          {/*  */}
         </form>
       </div>
     </GlassCard>
   );
 };
+
+// при лог ауте, можно вернуться на profile page хотя не должно быть такого, т.к гварды ставили.
