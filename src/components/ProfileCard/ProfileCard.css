@@ -1,54 +1,10 @@
-.profile__card__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.profile__card__form {
-  display: flex;
-  flex-direction: column;
-  max-width: 250px;
-  width: 100%;
-}
-
-.profile__title {
-  font-weight: 500;
-  font-size: 24px;
-  color: #fff;
-  padding-bottom: 14px;
-}
-
-.profile__card__container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-}
-
-.profile__card__label {
-  font-weight: 400;
-  font-size: 13px;
-  color: #fff;
-  padding-bottom: 8px;
-}
-
 .profile__card__input {
-  box-sizing: border-box;
-  padding: 8px 16px;
-  width: 100%;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  height: 32px;
-  background: #fff;
-  color: black;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-  &:read-only {
-    cursor: default;
-    opacity: 0.8;
-  }
+.profile__card__input:read-only {
+  cursor: default;
+  opacity: 0.8;
 }
 
 .profile__button__wrapper {
@@ -60,96 +16,5 @@
 }
 
 .profile__save__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  background: #003465;
-  border-radius: 7px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  color: #fff;
-  border: none;
-  transition: background-color 0.2s;
   margin: 5px;
-}
-
-.profile__save__btn:hover {
-  background: #00294e;
-}
-
-.profile__card__social {
-  width: 100%;
-  margin: 12px 0;
-}
-
-.profice__card__connect {
-  font-weight: 500;
-  font-size: 13px;
-  text-align: center;
-  color: #fff;
-}
-
-.profile__card__btns {
-  display: flex;
-  justify-content: center;
-  gap: 17px;
-  margin-bottom: 20px;
-}
-
-.profile__social__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 0.71px solid #bcbec0;
-  border-radius: 7px;
-  width: 72px;
-  height: 35px;
-  background: #fff;
-  transition: background-color 0.2s;
-}
-
-.social__img {
-  width: 18px;
-  height: 18px;
-}
-
-@media (max-width: 425px) {
-  .profile__card__form {
-    max-width: 200px;
-  }
-
-  .profile__card__container {
-    margin-bottom: 8px;
-  }
-
-  .profile__card__label {
-    padding-bottom: 4px;
-  }
-
-  .profile__card__input {
-    padding: 4px 4px;
-  }
-
-  .profile__card__input::placeholder {
-    font-size: 12px;
-  }
-
-  .profile__save__btn {
-    height: 36px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 375px) {
-  .profile__card__form {
-    max-width: 180px;
-  }
-
-  .profile__card__input::placeholder {
-    font-size: 10px;
-  }
 }

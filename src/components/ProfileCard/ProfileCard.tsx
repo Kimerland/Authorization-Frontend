@@ -1,9 +1,11 @@
 "use client";
+import "../../styles/globals.css";
+import "./ProfileCard.css";
 import React, { useEffect, useState } from "react";
 import { GlassCard } from "../GlassCard/GlassCard";
-import "./ProfileCard.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { SocialButtons } from "../SocialButtons/SocialButtons";
 
 export const ProfileCard = () => {
   const [email, setEmail] = useState("");
@@ -70,49 +72,49 @@ export const ProfileCard = () => {
 
   return (
     <GlassCard>
-      <div className="profile__card__wrapper">
-        <form className="profile__card__form">
-          <p className="profile__title">Profile Settings</p>
+      <div className="block__card__wrapper">
+        <form className="form-base">
+          <p className="form-title">Profile Settings</p>
 
-          <div className="profile__card__container">
-            <label htmlFor="email" className="profile__card__label">
+          <div className="form-container">
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="profile__card__input"
+              className="form-input profile__card__input"
               value={isEditing ? editedData.email : email}
               readOnly={!isEditing}
               onChange={handleChange}
             />
           </div>
 
-          <div className="profile__card__container">
-            <label htmlFor="password" className="profile__card__label">
+          <div className="form-container">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="profile__card__input"
+              className="form-input profile__card__input"
               value={isEditing ? editedData.password : "123456"}
               readOnly={!isEditing}
               onChange={handleChange}
             />
           </div>
 
-          <div className="profile__card__container">
-            <label htmlFor="confirmPassword" className="profile__card__label">
+          <div className="form-container">
+            <label htmlFor="confirmPassword" className="form-label">
               Confirm Password
             </label>
             <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              className="profile__card__input"
+              className="form-input profile__card__input"
               value={isEditing ? editedData.confirmPassword : "123456"}
               readOnly={!isEditing}
               onChange={handleChange}
@@ -121,7 +123,7 @@ export const ProfileCard = () => {
 
           <div className="profile__button__wrapper">
             <button
-              className="profile__save__btn"
+              className="primary-button profile__save__btn"
               type="button"
               onClick={isEditing ? handleSave : () => setIsEditing(true)}
             >
@@ -129,7 +131,7 @@ export const ProfileCard = () => {
             </button>
 
             <button
-              className="profile__save__btn"
+              className="primary-button"
               type="button"
               onClick={() => logOut()}
             >
@@ -137,21 +139,10 @@ export const ProfileCard = () => {
             </button>
           </div>
           {/*  */}
-          <div className="profile__card__social">
-            <p className="profice__card__connect">connect with</p>
+          <div className="social-section">
+            <p className="social-text">connect with</p>
           </div>
-
-          <div className="profile__card__btns">
-            <button className="profile__social__btn">
-              <img src="google.png" alt="google" className="social__img" />
-            </button>
-            <button className="profile__social__btn">
-              <img src="github.png" alt="github" className="social__img" />
-            </button>
-            <button className="profile__social__btn">
-              <img src="facebook.png" alt="facebook" className="social__img" />
-            </button>
-          </div>
+          <SocialButtons />
 
           {/*  */}
         </form>

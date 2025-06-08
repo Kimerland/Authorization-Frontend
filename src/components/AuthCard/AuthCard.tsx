@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import "../../styles/globals.css";
 import "./AuthCard.css";
+import React from "react";
 import { GlassCard } from "../GlassCard/GlassCard";
 import Link from "next/link";
 import { login, register } from "@/app/api/api";
@@ -13,6 +14,7 @@ import {
   registerSchema,
   registerSchemaType,
 } from "@/schemas/auth.schema";
+import { SocialButtons } from "../SocialButtons/SocialButtons";
 interface AuthCardProps {
   type?: "login" | "register";
 }
@@ -48,39 +50,39 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
 
   return (
     <GlassCard>
-      <div className="auth__card__container">
+      <div className="block__card__wrapper">
         <div className="auth__card__logo">
           <p className="auth__card__logo__text">Kimerlander</p>
         </div>
 
-        <form className="auth__card__form" onSubmit={handleSubmit(onSubmit)}>
-          <p className="auth__card__title">
+        <form className="form-base" onSubmit={handleSubmit(onSubmit)}>
+          <p className="form-title">
             {type === "login" ? "Login" : "Register"}
           </p>
 
-          <div className="auth__form__container">
-            <label htmlFor="email" className="auth__card__label">
+          <div className="form-container">
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input
               type="email"
               id="email"
               placeholder="username@gmail.com"
-              className="auth__card__input"
+              className="form-input"
               {...formRegister("email")}
             />
             {errors.email && <p className="error">{errors.email.message}</p>}
           </div>
 
-          <div className="auth__form__container">
-            <label htmlFor="password" className="auth__card__label">
+          <div className="form-container">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
             <input
               type="password"
               id="password"
               placeholder="Password"
-              className="auth__card__input"
+              className="form-input"
               {...formRegister("password")}
             />
             {errors.password && (
@@ -90,14 +92,14 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
 
           {type === "register" && (
             <>
-              <label htmlFor="confirmPassword" className="auth__card__label">
+              <label htmlFor="confirmPassword" className="form-label">
                 Confirm Password
               </label>
               <input
                 type="password"
                 id="confirmPassword"
                 placeholder="Password"
-                className="auth__card__input"
+                className="form-input"
                 {...formRegister("confirmPassword")}
               />
               {errors.password && (
@@ -114,27 +116,16 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
             </div>
           )}
 
-          <div className="auth__button__wrapper">
-            <button type="submit" className="auth__card__button">
+          <div className="button-wrapper">
+            <button type="submit" className="primary-button">
               {type === "login" ? "Sign in" : "Sign up"}
             </button>
           </div>
 
-          <div className="auth__card__social">
-            <p className="auth__card__continue">or continue with</p>
+          <div className="social-section">
+            <p className="social-text">connect with</p>
           </div>
-
-          <div className="auth__card__btn">
-            <button className="auth__social__btn">
-              <img src="google.png" alt="google" className="social__img" />
-            </button>
-            <button className="auth__social__btn">
-              <img src="github.png" alt="github" className="social__img" />
-            </button>
-            <button className="auth__social__btn">
-              <img src="facebook.png" alt="facebook" className="social__img" />
-            </button>
-          </div>
+          <SocialButtons />
 
           <div className="auth__card__switch">
             {type === "login" ? (

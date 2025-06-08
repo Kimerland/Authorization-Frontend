@@ -1,7 +1,7 @@
 .glass-card {
   display: flex;
   justify-content: center;
-  height: 557px;
+  min-height: 557px;
   max-width: 410px;
   margin: 0 auto;
   background: #5882c138;
