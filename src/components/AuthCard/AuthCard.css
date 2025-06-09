@@ -9,12 +9,6 @@
   text-align: center;
 }
 
-.error {
-  font-size: 12px;
-  min-height: 18px;
-  margin-top: 4px;
-}
-
 .auth__forgot__wrapper {
   margin-bottom: 10px;
 }

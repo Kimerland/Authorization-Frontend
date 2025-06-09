@@ -6,7 +6,7 @@ import { GlassCard } from "../GlassCard/GlassCard";
 import Link from "next/link";
 import { login, register } from "@/app/api/api";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { FieldErrors, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   loginSchema,
@@ -102,8 +102,15 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
                 className="form-input"
                 {...formRegister("confirmPassword")}
               />
-              {errors.password && (
-                <p className="error">{errors.password.message}</p>
+
+              {/* in next fix and refactoring for 2 components */}
+              {(errors as FieldErrors<registerSchemaType>).confirmPassword && (
+                <p className="error">
+                  {
+                    (errors as FieldErrors<registerSchemaType>).confirmPassword
+                      ?.message
+                  }
+                </p>
               )}
             </>
           )}

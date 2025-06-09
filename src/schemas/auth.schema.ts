@@ -13,7 +13,7 @@ export const registerSchema = loginSchema
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password don't exsist!",
-    path: ["confrimPassword"],
+    path: ["confirmPassword"],
   });
 
 export type loginSchemaType = z.infer<typeof loginSchema>;

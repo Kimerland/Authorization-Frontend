@@ -20,6 +20,12 @@ body {
   font-family: var(--font-montserrat), sans-serif;
 }
 
+.error {
+  font-size: 12px;
+  min-height: 18px;
+  margin-top: 4px;
+}
+
 .block__card__wrapper {
   display: flex;
   flex-direction: column;
