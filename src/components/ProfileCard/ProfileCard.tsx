@@ -37,6 +37,7 @@ export const ProfileCard = () => {
         reset({ email, password: "", confirmPassword: "" });
       } catch (err) {
         console.error(err);
+        router.replace("/login");
       }
     };
     userData();
@@ -65,7 +66,7 @@ export const ProfileCard = () => {
       {},
       { withCredentials: true }
     );
-    router.push("/login");
+    router.replace("/login");
   };
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 import "../../styles/globals.css";
 import "./AuthCard.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { GlassCard } from "../GlassCard/GlassCard";
 import Link from "next/link";
 import { login, register } from "@/app/api/api";
@@ -15,6 +15,7 @@ import {
   registerSchemaType,
 } from "@/schemas/auth.schema";
 import { SocialButtons } from "../SocialButtons/SocialButtons";
+import axios from "axios";
 interface AuthCardProps {
   type?: "login" | "register";
 }
@@ -47,6 +48,20 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
       console.log("Error", err);
     }
   };
+
+  useEffect(() => {
+    const checkLogout = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/auth/profile", {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          router.replace("/profile");
+        }
+      } catch {}
+    };
+    checkLogout();
+  }, []);
 
   return (
     <GlassCard>
