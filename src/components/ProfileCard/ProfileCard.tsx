@@ -28,7 +28,7 @@ export const ProfileCard = () => {
   useEffect(() => {
     const userData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/auth/profile", {
+        const res = await axios.get("http://localhost:5555/auth/profile", {
           withCredentials: true,
         });
         const { email, id } = res.data;
@@ -49,7 +49,7 @@ export const ProfileCard = () => {
       if (data.email !== email) payload.email = data.email;
       if (data.password) payload.password = data.password;
 
-      await axios.patch(`http://localhost:5000/users/${userId}`, payload, {
+      await axios.patch(`http://localhost:5555/users/${userId}`, payload, {
         withCredentials: true,
       });
 
@@ -62,7 +62,7 @@ export const ProfileCard = () => {
 
   const logOut = async () => {
     await axios.post(
-      "http://localhost:5000/auth/logout",
+      "http://localhost:5555/auth/logout",
       {},
       { withCredentials: true }
     );

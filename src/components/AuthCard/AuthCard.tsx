@@ -22,6 +22,7 @@ interface AuthCardProps {
 
 export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
   const router = useRouter();
+  const [serverError, setServerError] = React.useState("");
 
   const {
     register: formRegister,
@@ -32,6 +33,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
   });
 
   const onSubmit = async (data: any) => {
+    setServerError("");
+
     try {
       if (type === "login") {
         const res = await login(data.email, data.password);
@@ -44,15 +47,22 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
         );
         router.push("/profile");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.log("Error", err);
+      if (err.response?.data?.message) {
+        setServerError(err.response.data.message);
+      } else if (Array.isArray(err.response?.data?.message)) {
+        setServerError(err.response.data.message.join(", "));
+      } else {
+        setServerError("Произошла неизвестная ошибка.");
+      }
     }
   };
 
   useEffect(() => {
     const checkLogout = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/auth/profile", {
+        const res = await axios.get("http://localhost:5555/auth/profile", {
           withCredentials: true,
         });
         if (res.status === 200) {
@@ -68,6 +78,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
       <div className="block__card__wrapper">
         <div className="auth__card__logo">
           <p className="auth__card__logo__text">Kimerlander</p>
+          {/* create more uses */}
+          {serverError && <p className="error server-error">{serverError}</p>}
         </div>
 
         <form className="form-base" onSubmit={handleSubmit(onSubmit)}>

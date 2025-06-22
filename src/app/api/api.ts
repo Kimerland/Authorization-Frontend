@@ -1,6 +1,7 @@
+"use client";
 import { api } from "./lib";
 
-const API = "http://localhost:5000";
+const API = "http://localhost:5555";
 
 export const login = async (email: string, password: string) => {
   console.log("Send data", { email, password });

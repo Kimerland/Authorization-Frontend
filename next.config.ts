@@ -1,7 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  matcher: ["/profile/:path*", "/login", "/register"],
+const nextConfig = {
+  reactStrictMode: true,
 };
 
 export default nextConfig;
