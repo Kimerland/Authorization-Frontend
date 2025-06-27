@@ -54,7 +54,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({ type = "login" }) => {
       } else if (Array.isArray(err.response?.data?.message)) {
         setServerError(err.response.data.message.join(", "));
       } else {
-        setServerError("Произошла неизвестная ошибка.");
+        setServerError("Undefiend error");
       }
     }
   };

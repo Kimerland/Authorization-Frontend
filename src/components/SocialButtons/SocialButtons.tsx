@@ -24,7 +24,7 @@ export const SocialButtons = () => {
     <div className="social__buttons">
       {socialIcons.map((icon) => (
         <a key={icon.alt} href={icon.link}>
-          <button className="social__btn">
+          <button className="social__btn" type="button">
             <Image
               src={icon.src}
               alt={icon.alt}
